@@ -1,16 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
+<html <?php language_attributes(); ?>>
 
 <head>
-    <?php wp_head(); ?>
-    <meta charset="UTF-8">
+    <meta charset="<?php bloginfo('charset'); ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <?php wp_head(); ?>
     <title>Avalon College</title>
 </head>
 
-<body>
+<body <?php body_class(); ?>>
 
-    <header class="site-header">
+    <header class=" site-header">
         <div class="container">
             <h1 class="school-logo-text float-left">
                 <a href="<?php echo site_url('/') ?>"><strong>Avalon</strong> College</a>
@@ -20,12 +20,22 @@
             <i class="site-header__menu-trigger fa fa-bars menu-bar" aria-hidden="true"></i>
             <div class="site-header__menu group">
                 <nav class="main-navigation">
+                    <!-- <?php 
+                    
+                        wp_nav_menu(array(
+                            'theme_location' => 'headerMenuLocation'
+                        ));
+                    ?> -->
                     <ul>
-                        <li><a href="<?php echo site_url('/about-us')?>">About Us</a></li>
+                        <li
+                            <?php if(is_page('about-us') or wp_get_post_parent_id(0) == 12 ) echo 'class="current-menu-item"'?>>
+                            <a href="<?php echo site_url('/about-us')?>">About
+                                Us</a>
+                        </li>
                         <li><a href="<?php echo site_url('/programs')?>">Programs</a></li>
                         <li><a href="<?php echo site_url('/events')?>">Events</a></li>
                         <li><a href="<?php echo site_url('/campuses')?>">Campuses</a></li>
-                        <li><a href="<?php echo site_url('/blogs')?>">Blog</a></li>
+                        <li><a href="<?php echo site_url('/blog')?>">Blog</a></li>
                     </ul>
                 </nav>
                 <div class="site-header__util">

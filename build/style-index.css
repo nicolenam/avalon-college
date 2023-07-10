@@ -870,6 +870,7 @@ body.login {
 .main-navigation .current-menu-item a,
 .main-navigation a:hover {
   color: #faf0ca;
+  font-weight: 700;
 }
 .page-banner {
   background-color: #000;
