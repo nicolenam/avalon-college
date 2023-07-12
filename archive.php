@@ -12,9 +12,9 @@ get_header();
         }else if(is_author()){  
             echo 'Posts by '; the_author();
         } ?>
-            <!-- <?php
+            <?php
             the_archive_title();
-            ?> -->
+            ?>
         </h1>
         <div class="page-banner__intro">
             <p><?php the_archive_description(); ?></p>
