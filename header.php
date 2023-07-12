@@ -33,7 +33,9 @@
                                 Us</a>
                         </li>
                         <li><a href="<?php echo site_url('/programs')?>">Programs</a></li>
-                        <li><a href="<?php echo site_url('/events')?>">Events</a></li>
+                        <li <?php if(get_post_type() == 'event') echo 'class="current-menu-item"' ?>><a
+                                href="<?php echo get_post_type_archive_link('event')?>">
+                                Events</a></li>
                         <li><a href="<?php echo site_url('/campuses')?>">Campuses</a></li>
                         <li <?php if(get_post_type() == 'post') echo 'class="current-menu-item"' ?>><a
                                 href="<?php echo site_url('/blog')?>">Blog</a>
