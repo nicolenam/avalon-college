@@ -22,9 +22,9 @@ while(have_posts()){
 
     <div class="metabox metabox--position-up metabox--with-home-link">
         <p>
-            <a class="metabox__blog-home-link" href="<?php echo get_post_type_archive_link('event'); ?>">
+            <a class="metabox__blog-home-link" href="<?php echo get_post_type_archive_link('program'); ?>">
                 <i class="fa fa-home" aria-hidden="true"></i>
-                Events Home</a>
+                All Prgrams</a>
             <span class="metabox__main">
                 <?php the_title(); ?>
             </span>
@@ -32,19 +32,13 @@ while(have_posts()){
     </div>
 
     <div class="generic-content">
-        <p><?php the_content(); ?></p>
+        <p><?php the_content(); ?>
+        </p>
     </div>
-    <?php
-        $relatedPrograms = get_field('related_programs');
-
-        foreach($relatedPrograms as $pro) { ?>
-
-    <li><a href="<?php echo get_the_permalink($pro); ?>"><?php echo get_the_title($pro); ?></a></li>
-    <?php }
-    ?>
 </div>
 
 <?php }
 
-get_footer();
+get_footer(); 
+
 ?>

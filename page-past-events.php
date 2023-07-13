@@ -38,6 +38,7 @@ get_header();
                 )
             )
         ));
+
         while($pastEvents->have_posts()) {
             $pastEvents->the_post(); ?>
 
