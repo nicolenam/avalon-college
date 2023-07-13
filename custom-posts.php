@@ -9,14 +9,14 @@ function post_types() {
       'public' => true,
       'show_in_rest' => true,
       'labels' => array(
-        'name' => 'Events',
+        'name' => 'Professors',
         'add_new_item' => 'Add New Professor',
         'edit_item' => 'Edit Professor',
         'all_items' => 'All Professors',
         'singular_name' => 'Professor'
       ),
       'supports' => array( 'title', 'editor', 'author', 'thumbnail', 'excerpt', 'comments'),
-      'menu_icon' => 'dashicons-calendar'
+      'menu_icon' => 'dashicons-businessperson'
     ));
     
   // Event post type
