@@ -1,5 +1,9 @@
 <?php
 
+/* Custom Post Types */
+
+require( get_template_directory() . '/custom-posts.php');
+
 function college_files(){
     wp_enqueue_style('font-awesome', '//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
     wp_enqueue_style('college_main_styles', get_theme_file_uri('/build/style-index.css'));
