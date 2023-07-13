@@ -37,10 +37,17 @@ while(have_posts()){
     <?php
         $relatedPrograms = get_field('related_programs');
 
-        foreach($relatedPrograms as $pro) { ?>
-
-    <li><a href="<?php echo get_the_permalink($pro); ?>"><?php echo get_the_title($pro); ?></a></li>
+        if($relatedPrograms){
+            
+                echo '<hr class="section-break">';
+                echo '<h2 class="headline headline--medium">Related Program(s)</h2>';
+                echo '<ul class="link-list min-list">';
+                
+                foreach($relatedPrograms as $pro) { ?>
+    <li><a href=" <?php echo get_the_permalink($pro); ?>"><?php echo get_the_title($pro); ?></a></li>
     <?php }
+            echo '</ul>';
+        }
     ?>
 </div>
 
