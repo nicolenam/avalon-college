@@ -1,6 +1,24 @@
 <?php
  
 function post_types() {
+  // Professor post type
+    register_post_type('professor', array(
+      'show_in_rest' => true,
+      'rewrite' => array('slug' => 'professors'),
+      'has_archive' => true,
+      'public' => true,
+      'show_in_rest' => true,
+      'labels' => array(
+        'name' => 'Events',
+        'add_new_item' => 'Add New Professor',
+        'edit_item' => 'Edit Professor',
+        'all_items' => 'All Professors',
+        'singular_name' => 'Professor'
+      ),
+      'supports' => array( 'title', 'editor', 'author', 'thumbnail', 'excerpt', 'comments'),
+      'menu_icon' => 'dashicons-calendar'
+    ));
+    
   // Event post type
   register_post_type('event', array(
     'show_in_rest' => true,
