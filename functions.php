@@ -50,8 +50,16 @@ function adjust_default_queries($query){
         );
     }
 }
-
 add_action('pre_get_posts', 'adjust_default_queries');
+
+// Event archive pagination
+// function enable_event_archive_pagination($query) {
+//     if (is_post_type_archive('event') && $query->is_main_query()) {
+//         $query->set('posts_per_page', 1); 
+//     }
+// }
+// add_action('pre_get_posts', 'enable_event_archive_pagination');
+
 
 
 ?>

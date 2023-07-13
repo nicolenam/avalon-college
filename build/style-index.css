@@ -1026,6 +1026,7 @@ body.login {
 .glide__bullets button.glide__bullet--active {
   background-color: #fff;
 }
+
 .search-overlay {
   overflow-y: auto;
   overflow-x: hidden;
@@ -1496,4 +1497,22 @@ body.admin-bar .search-overlay {
 .post-item:last-of-type {
   border-bottom: none;
   margin-bottom: 0;
+}
+
+/* customizations */
+
+.search--container{
+  width: 100%;
+}
+
+.search--bar{  
+  margin: 10px 0 50px;
+  width: 100%;
+  padding: 10px;
+}
+
+.search--icon{
+  position: absolute;
+  right: 0;
+  top: 80px;
 }
