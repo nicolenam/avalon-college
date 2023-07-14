@@ -14,12 +14,16 @@ function college_files(){
 
 add_action('wp_enqueue_scripts','college_files');
 
+// Adds theme support 
 function university_features(){
     register_nav_menu('headerMenuLocation', 'Header Menu Location');
     register_nav_menu('footerLocationOne', 'Footer Location One');
     register_nav_menu('footerLocationTwo', 'Footer Location Two');
 
     add_theme_support('title-tag');
+    add_theme_support('post-thumbnails');
+    add_image_size('professorLandscape', 400 , 260, true);
+    add_image_size('professorPortrait', 480, 650, true);
 }
 
 add_action('after_setup_theme', 'university_features');
@@ -31,8 +35,6 @@ function adjust_default_queries($query){
         $query->set('order', 'ASC');
         $query->set('post_per_page', -1);
     }
-
-
     
     if(!is_admin() AND is_post_type_archive('event') AND $query->is_main_query()){
         $today = date('Ymd');
@@ -52,6 +54,7 @@ function adjust_default_queries($query){
 }
 add_action('pre_get_posts', 'adjust_default_queries');
 
+
 // Event archive pagination
 // function enable_event_archive_pagination($query) {
 //     if (is_post_type_archive('event') && $query->is_main_query()) {
@@ -59,7 +62,5 @@ add_action('pre_get_posts', 'adjust_default_queries');
 //     }
 // }
 // add_action('pre_get_posts', 'enable_event_archive_pagination');
-
-
 
 ?>

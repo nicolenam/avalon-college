@@ -1,6 +1,25 @@
 <?php
  
 function post_types() {
+
+  // Filter post type for testing 
+  register_post_type('alumni', array(
+    'taxonomies' => array('category', 'post_tag'),
+    'show_in_rest' => true,
+    'has_archive' => true,
+    'rewrite' => array('slug' => 'alumnae'),
+    'public' => true,
+    'show_in_rest' => true,
+    'labels' => array(
+      'name' => 'alumnae',
+      'add_new_item' => 'Add New alumni',
+      'edit_item' => 'Edit alumni',
+      'all_items' => 'All alumnae',
+      'singular_name' => 'alumni'
+    ),
+    'supports' => array( 'title', 'editor', 'thumbnail'),
+    'menu_icon' => 'dashicons-admin-users'
+  ));
   
   // Professor post type
     register_post_type('professor', array(
@@ -15,7 +34,7 @@ function post_types() {
         'all_items' => 'All Professors',
         'singular_name' => 'Professor'
       ),
-      'supports' => array( 'title', 'editor', 'author', 'thumbnail', 'excerpt', 'comments'),
+      'supports' => array( 'title', 'editor', 'thumbnail'),
       'menu_icon' => 'dashicons-welcome-learn-more'
     ));
     

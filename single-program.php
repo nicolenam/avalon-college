@@ -1,5 +1,4 @@
 <?php
-
 get_header();
 
 while(have_posts()){
@@ -38,20 +37,12 @@ while(have_posts()){
 
     <?php 
 
-$today = date('Ymd');
-$eventPosts = new WP_Query(array(
-    'post_type' => 'event',
-    'posts_per_page' => 2,
-    'meta_key' => 'event_date',
-    'orderby' => 'meta_value_num',
+$relatedProfessor = new WP_Query(array(
+    'post_type' => 'professor',
+    'posts_per_page' => -1,
+    'orderby' => 'title',
     'order' => 'ASC',
     'meta_query' => array(
-        array(
-            'key' => 'event_date',
-            'compare' => '>=',
-            'value'=> $today,
-            'type' => 'numeric'
-        ),
         array(
             'key' => 'related_programs',
             'compare' => 'LIKE',
@@ -60,43 +51,86 @@ $eventPosts = new WP_Query(array(
     )
 ));
 
+if($relatedProfessor->have_posts()){
+    echo '<hr class="section-break">';
+    echo '<h2 class="headline headline--medium">' .get_the_title() . ' Professors</h2>';  
+    echo '<ul class="professor-cards">';
+    while($relatedProfessor->have_posts()){
+        $relatedProfessor->the_post(); ?>
+
+    <li class="professor-card__list-item">
+        <a class="professor-card" href="<?php the_permalink(); ?>">
+            <img class="professor-card__image" src="<?php the_post_thumbnail_url(); ?>">
+            <span class=" professor-card__name"><?php the_title(); ?></span>
+        </a>
+    </li>
+
+    <?php }  
+    echo '</ul>';
+    wp_reset_postdata();
+}
+?>
+</div>
+
+<?php
+
+$today = date('Ymd');
+$eventPosts = new WP_Query(array(
+'post_type' => 'event',
+'posts_per_page' => 2,
+'meta_key' => 'event_date',
+'orderby' => 'meta_value_num',
+'order' => 'ASC',
+'meta_query' => array(
+array(
+'key' => 'event_date',
+'compare' => '>=',
+'value'=> $today,
+'type' => 'numeric'
+),
+array(
+'key' => 'related_programs',
+'compare' => 'LIKE',
+'value' => '"' . get_the_ID() . '"'
+)
+)
+));
+
 while($eventPosts->have_posts()){
 $eventPosts->the_post(); ?>
-
+<div class=" container container--narrow">
     <?php 
     if($eventPosts){
-        echo '<h2>Upcoming Events </h2>';
+        echo '<hr class="section-break">';
+        echo '<h2 class="headline headline--medium">Related Program(s)</h2>';
     }
     ?>
-
-    <div class="event-summary">
-        <a class="event-summary__date t-center" href="<?php the_permalink(); ?>">
-            <span class="event-summary__month"><?php 
+    <div class="container container--narrow page-section">
+        <div class="event-summary">
+            <a class="event-summary__date t-center" href="<?php the_permalink(); ?>">
+                <span class="event-summary__month"><?php 
         $eventDate = new DateTime(get_field('event_date'));
         echo $eventDate-> format('M');
         ?></span>
-            <span class=" event-summary__day"><?php echo $eventDate-> format('d');?></span>
-        </a>
-        <div class="event-summary__content">
-            <h5 class="event-summary__title headline headline--tiny"><a
-                    href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h5>
-            <p><?php if(has_excerpt()){
+                <span class=" event-summary__day"><?php echo $eventDate-> format('d');?></span>
+            </a>
+            <div class="event-summary__content">
+                <h5 class="event-summary__title headline headline--tiny"><a
+                        href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h5>
+                <p><?php if(has_excerpt()){
             echo get_the_excerpt();
         }else{
             echo wp_trim_words(get_the_content(), 18);
         } ?><a href="<?php the_permalink(); ?>" class="nu gray">&nbsp;Learn
-                    more</a></p>
+                        more</a></p>
+            </div>
         </div>
+
+        <?php }  wp_reset_postdata();
+?>
     </div>
 
-    <?php }  wp_reset_postdata();
-?>
 
-</div>
-
-
-<?php }
-
+    <?php }
 get_footer(); 
-
 ?>
