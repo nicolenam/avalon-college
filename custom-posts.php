@@ -1,11 +1,11 @@
 <?php
  
 function post_types() {
+  
   // Professor post type
     register_post_type('professor', array(
       'show_in_rest' => true,
       'rewrite' => array('slug' => 'professors'),
-      'has_archive' => true,
       'public' => true,
       'show_in_rest' => true,
       'labels' => array(
@@ -16,7 +16,7 @@ function post_types() {
         'singular_name' => 'Professor'
       ),
       'supports' => array( 'title', 'editor', 'author', 'thumbnail', 'excerpt', 'comments'),
-      'menu_icon' => 'dashicons-businessperson'
+      'menu_icon' => 'dashicons-welcome-learn-more'
     ));
     
   // Event post type

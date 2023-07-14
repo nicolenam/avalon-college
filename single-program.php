@@ -63,6 +63,12 @@ $eventPosts = new WP_Query(array(
 while($eventPosts->have_posts()){
 $eventPosts->the_post(); ?>
 
+    <?php 
+    if($eventPosts){
+        echo '<h2>Upcoming Events </h2>';
+    }
+    ?>
+
     <div class="event-summary">
         <a class="event-summary__date t-center" href="<?php the_permalink(); ?>">
             <span class="event-summary__month"><?php 
