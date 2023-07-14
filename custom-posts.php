@@ -2,7 +2,7 @@
  
 function post_types() {
 
-  // Filter post type for testing 
+  // alumni post type 
   register_post_type('alumni', array(
     'taxonomies' => array('category', 'post_tag'),
     'show_in_rest' => true,
@@ -11,7 +11,7 @@ function post_types() {
     'public' => true,
     'show_in_rest' => true,
     'labels' => array(
-      'name' => 'alumnae',
+      'name' => 'Alumnae',
       'add_new_item' => 'Add New alumni',
       'edit_item' => 'Edit alumni',
       'all_items' => 'All alumnae',

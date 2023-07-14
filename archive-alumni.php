@@ -12,27 +12,25 @@
     </div>
 </div>
 
-<div class="container container--narrow page-section">
-
+<div class="container container--narrow page-section alumni-grid">
     <?php
-
-    while(have_posts()){
-    the_post()?>
-
-    <div class="alumni-container">
-        <img src="" class="alumni-image">
-        <div class="alumni-description">
-            <p><?php the_content(); ?></p>
-        </div>
-
-    </div>
-
-    <?php
-    }
+while(have_posts()){
+    the_post();
+    $awards = get_field('achievements_and_awards');
     ?>
 
+    <div class="alumni-container">
+        <div class="alumni-image">
+            <?php the_post_thumbnail('alumni-image-size'); ?>
+        </div>
+        <p class="alumni-title"><?php the_title(); ?></p>
+        <div class="alumni-description">
+            <span class="dashicons dashicons-awards"></span>
+            <?php echo $awards; ?>
+        </div>
+    </div>
 
+    <?php } ?>
 </div>
-
 
 <?php get_footer(); ?>
