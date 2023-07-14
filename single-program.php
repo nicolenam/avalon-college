@@ -1,8 +1,11 @@
 <?php
 get_header();
 
+
 while(have_posts()){
     the_post(); ?>
+
+<?php echo do_shortcode('[tribe_events]'); ?>
 
 <div class="page-banner">
     <div class="page-banner__bg-image"

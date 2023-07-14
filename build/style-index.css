@@ -1501,22 +1501,27 @@ body.admin-bar .search-overlay {
 
 /* alumni styles */
 
-.alumni-grid{
+.alumni-container{
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 15px;
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 100px 16px;
+  position: relative;
 }
 
-.alumni-container{
+.alumni-card{
   border-radius: 10px;
   background: beige;
   text-align: center;
   padding: 30px;
+  height: 300px;
 }
 
 .alumni-image {
   width: auto;
-  height: auto;
+  height: 200px;
   overflow: hidden;
 }
 
@@ -1540,4 +1545,6 @@ body.admin-bar .search-overlay {
   padding: 20px 0;
 }
 
-
+.alumni-link{
+  text-decoration: none;
+}

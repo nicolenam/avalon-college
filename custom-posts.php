@@ -17,7 +17,7 @@ function post_types() {
       'all_items' => 'All alumnae',
       'singular_name' => 'alumni'
     ),
-    'supports' => array( 'title', 'editor', 'thumbnail'),
+    'supports' => array( 'title', 'editor'),
     'menu_icon' => 'dashicons-admin-users'
   ));
   

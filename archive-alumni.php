@@ -12,23 +12,36 @@
     </div>
 </div>
 
-<div class="container container--narrow page-section alumni-grid">
+<div class="alumni-container">
     <?php
 while(have_posts()){
     the_post();
     $awards = get_field('achievements_and_awards');
+    $thumbnail = get_field('thumbnail');
     ?>
 
-    <div class="alumni-container">
-        <div class="alumni-image">
-            <?php the_post_thumbnail('alumni-image-size'); ?>
+
+    <a class="alumni-link" href="<?php the_permalink(); ?>">
+        <div class="alumni-card">
+            <div class="alumni-image">
+                <img src="<?php echo  $thumbnail['url']; ?>" alt="">
+            </div>
+            <p class=" alumni-title"><?php the_title(); ?></p>
+            <?php
+                if($awards !== false && $awards !== 'N/A'){ ?>
+            <div class="alumni-description">
+                <span class="dashicons dashicons-awards"></span>
+                <?php echo $awards; ?>
+            </div>
+            <?php
+            }else{ ?>
+            <?php
+            }
+            ?>
+
         </div>
-        <p class="alumni-title"><?php the_title(); ?></p>
-        <div class="alumni-description">
-            <span class="dashicons dashicons-awards"></span>
-            <?php echo $awards; ?>
-        </div>
-    </div>
+
+    </a>
 
     <?php } ?>
 </div>
