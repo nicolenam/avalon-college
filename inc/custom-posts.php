@@ -3,9 +3,10 @@
 function post_types() {
 
     // Campus post type
-    register_post_type('Campus', array(
+    register_post_type('campus', array(
       'show_in_rest' => true,
-      'rewrite' => array('slug' => 'Campuses'),
+      'rewrite' => array('slug' => 'campuses'),
+      'has_archive' => true,
       'public' => true,
       'show_in_rest' => true,
       'labels' => array(
@@ -15,9 +16,10 @@ function post_types() {
         'all_items' => 'All Campuses',
         'singular_name' => 'Campus'
       ),
-      'supports' => array( 'title', 'editor', 'thumbnail'),
-      'menu_icon' => 'dashicons-welcome-learn-more'
+      'supports' => array( 'title', 'editor', 'author', 'thumbnail', 'excerpt', 'comments'),
+      'menu_icon' => 'dashicons-calendar'
     ));
+  
 
   // Professor post type
     register_post_type('professor', array(
