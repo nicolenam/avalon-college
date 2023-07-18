@@ -2,25 +2,23 @@
  
 function post_types() {
 
-  // alumni post type 
-  register_post_type('alumni', array(
-    'taxonomies' => array('category', 'post_tag'),
-    'show_in_rest' => true,
-    'has_archive' => true,
-    'rewrite' => array('slug' => 'alumnae'),
-    'public' => true,
-    'show_in_rest' => true,
-    'labels' => array(
-      'name' => 'Alumnae',
-      'add_new_item' => 'Add New alumni',
-      'edit_item' => 'Edit alumni',
-      'all_items' => 'All alumnae',
-      'singular_name' => 'alumni'
-    ),
-    'supports' => array( 'title', 'editor'),
-    'menu_icon' => 'dashicons-admin-users'
-  ));
-  
+    // Campus post type
+    register_post_type('Campus', array(
+      'show_in_rest' => true,
+      'rewrite' => array('slug' => 'Campuses'),
+      'public' => true,
+      'show_in_rest' => true,
+      'labels' => array(
+        'name' => 'Campuses',
+        'add_new_item' => 'Add New Campus',
+        'edit_item' => 'Edit Campus',
+        'all_items' => 'All Campuses',
+        'singular_name' => 'Campus'
+      ),
+      'supports' => array( 'title', 'editor', 'thumbnail'),
+      'menu_icon' => 'dashicons-welcome-learn-more'
+    ));
+
   // Professor post type
     register_post_type('professor', array(
       'show_in_rest' => true,

@@ -1,5 +1,8 @@
 <?php
 
+/* Custom Post Types */
+require( get_template_directory() . '/inc/custom-posts.php');
+
 /* reusable functions */
 function pageBanner($args = NULL){
     
@@ -33,9 +36,6 @@ function pageBanner($args = NULL){
 
 <?php }
 
-/* Custom Post Types */
-
-require( get_template_directory() . '/custom-posts.php');
 
 function college_files(){
 wp_enqueue_style('font-awesome', '//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
@@ -89,7 +89,6 @@ array(
 }
 }
 add_action('pre_get_posts', 'adjust_default_queries');
-
 
 
 // Event archive pagination
