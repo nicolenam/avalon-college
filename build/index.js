@@ -111,21 +111,28 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
 
 class Search {
+  // 1. describe and create object
   constructor() {
     this.openButton = jquery__WEBPACK_IMPORTED_MODULE_0___default()('.js-search-trigger');
     this.closeButton = jquery__WEBPACK_IMPORTED_MODULE_0___default()('.search-overlay__close');
     this.searchOverlay = jquery__WEBPACK_IMPORTED_MODULE_0___default()('.search-overlay');
     this.events();
   }
+
+  // 2. events
   events() {
     this.openButton.on('click', () => this.openOverlay());
     this.closeButton.on('click', () => this.closeOverlay());
   }
+
+  // 3. methods (function, action...)
   openOverlay() {
     this.searchOverlay.addClass('search-overlay--active');
+    jquery__WEBPACK_IMPORTED_MODULE_0___default()("body").addClass("body-no-scroll");
   }
   closeOverlay() {
     this.searchOverlay.removeClass('search-overlay--active');
+    jquery__WEBPACK_IMPORTED_MODULE_0___default()("body").removeClass("body-no-scroll");
   }
 }
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Search);
