@@ -120,6 +120,7 @@ class Search {
     this.resultDiv = jquery__WEBPACK_IMPORTED_MODULE_0___default()('#search-overlay__results');
     this.isOverlayOpen = false;
     this.isSpinnerVisible = false;
+    this.previousValue;
     this.typingTimer;
     this.events();
   }
@@ -129,17 +130,25 @@ class Search {
     this.openButton.on('click', () => this.openOverlay());
     this.closeButton.on('click', () => this.closeOverlay());
     jquery__WEBPACK_IMPORTED_MODULE_0___default()(document).on('keydown', e => this.keyPressDispatcher(e));
-    this.searchField.on('keydown', () => this.typingLogic());
+    this.searchField.on('keyup', () => this.typingLogic());
   }
 
   // 3. methods (function, action...)
   typingLogic() {
-    clearTimeout(this.typingTimer);
-    if (!this.isSpinnerVisible) {
-      this.resultDiv.html('<div class="spinner-loader"></div>');
-      this.isSpinnerVisible = true;
+    if (this.searchField.val() != this.previousValue) {
+      clearTimeout(this.typingTimer);
+      if (this.searchField.val()) {
+        if (!this.isSpinnerVisible) {
+          this.resultDiv.html('<div class="spinner-loader"></div>');
+          this.isSpinnerVisible = true;
+        }
+        this.typingTimer = setTimeout(() => this.getResults(), 1000);
+      } else {
+        this.resultDiv.html('');
+        this.isSpinnerVisible = false;
+      }
     }
-    this.typingTimer = setTimeout(() => this.getResults(), 1000);
+    this.previousValue = this.searchField.val();
   }
   getResults() {
     this.resultDiv.html(`<h2>yoyoyo</h2>`);
@@ -158,7 +167,7 @@ class Search {
   keyPressDispatcher(e) {
     if (e.keyCode == 27 && this.isOverlayOpen) {
       this.closeOverlay();
-    } else if (e.keyCode == 83 && !this.isOverlayOpen) {
+    } else if (e.keyCode == 83 && !this.isOverlayOpen && !jquery__WEBPACK_IMPORTED_MODULE_0___default()('input, textarea').is(':focus')) {
       this.openOverlay();
     }
   }

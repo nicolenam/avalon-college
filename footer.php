@@ -92,7 +92,7 @@
         <div id="search-overlay__results"></div>
     </div>
 </div>
-
+<input type="text">
 <?php wp_footer(); ?>
 
 </body>
