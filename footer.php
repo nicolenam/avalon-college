@@ -87,6 +87,10 @@
             <i class="fa fa-window-close search-overlay__close" aria-hidde="true"></i>
         </div>
     </div>
+
+    <div class="container">
+        <div id="search-overlay__results"></div>
+    </div>
 </div>
 
 <?php wp_footer(); ?>

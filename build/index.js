@@ -117,7 +117,9 @@ class Search {
     this.closeButton = jquery__WEBPACK_IMPORTED_MODULE_0___default()('.search-overlay__close');
     this.searchOverlay = jquery__WEBPACK_IMPORTED_MODULE_0___default()('.search-overlay');
     this.searchField = jquery__WEBPACK_IMPORTED_MODULE_0___default()('#search-term');
+    this.resultDiv = jquery__WEBPACK_IMPORTED_MODULE_0___default()('#search-overlay__results');
     this.isOverlayOpen = false;
+    this.isSpinnerVisible = false;
     this.typingTimer;
     this.events();
   }
@@ -133,9 +135,15 @@ class Search {
   // 3. methods (function, action...)
   typingLogic() {
     clearTimeout(this.typingTimer);
-    this.typingTimer = setTimeout(() => {
-      console.log("this is a timeout test.");
-    }, 1000);
+    if (!this.isSpinnerVisible) {
+      this.resultDiv.html('<div class="spinner-loader"></div>');
+      this.isSpinnerVisible = true;
+    }
+    this.typingTimer = setTimeout(() => this.getResults(), 1000);
+  }
+  getResults() {
+    this.resultDiv.html(`<h2>yoyoyo</h2>`);
+    this.isSpinnerVisible = false;
   }
   openOverlay() {
     this.searchOverlay.addClass('search-overlay--active');

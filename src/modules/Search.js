@@ -7,7 +7,9 @@ class Search {
         this.closeButton = $('.search-overlay__close');
         this.searchOverlay = $('.search-overlay');
         this.searchField = $('#search-term');
+        this.resultDiv = $('#search-overlay__results');
         this.isOverlayOpen = false;
+        this.isSpinnerVisible = false;
         this.typingTimer;
         this.events();
     }
@@ -23,9 +25,16 @@ class Search {
     // 3. methods (function, action...)
     typingLogic() {
         clearTimeout(this.typingTimer);
-        this.typingTimer = setTimeout( () => {
-            console.log("this is a timeout test.")
-        },1000)
+        if(!this.isSpinnerVisible){
+            this.resultDiv.html('<div class="spinner-loader"></div>');
+            this.isSpinnerVisible = true;
+        }
+        this.typingTimer = setTimeout( () => this.getResults(), 1000)
+    }
+
+    getResults() {
+        this.resultDiv.html(`<h2>yoyoyo</h2>`);
+        this.isSpinnerVisible = false;
     }
 
     openOverlay() {
