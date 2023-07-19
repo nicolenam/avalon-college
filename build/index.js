@@ -151,8 +151,16 @@ class Search {
     this.previousValue = this.searchField.val();
   }
   getResults() {
-    this.resultDiv.html(`<h2>yoyoyo</h2>`);
-    this.isSpinnerVisible = false;
+    jquery__WEBPACK_IMPORTED_MODULE_0___default().getJSON(`http://avalon-college.local/wp-json/wp/v2/posts?search=${this.searchField.val()}`, posts => {
+      this.resultDiv.html(`
+                <h2 class="search-overlay__Section-title">General Information</h2>
+                <ul class="link-list min-list">
+                    ${posts.map(post => {
+        return `<li><a href="${post.link}">${post.title.rendered}</a></li>`;
+      }).join('')}
+                </ul>
+            `);
+    });
   }
   openOverlay() {
     this.searchOverlay.addClass('search-overlay--active');
