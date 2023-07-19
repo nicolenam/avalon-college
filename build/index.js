@@ -116,6 +116,9 @@ class Search {
     this.openButton = jquery__WEBPACK_IMPORTED_MODULE_0___default()('.js-search-trigger');
     this.closeButton = jquery__WEBPACK_IMPORTED_MODULE_0___default()('.search-overlay__close');
     this.searchOverlay = jquery__WEBPACK_IMPORTED_MODULE_0___default()('.search-overlay');
+    this.searchField = jquery__WEBPACK_IMPORTED_MODULE_0___default()('#search-term');
+    this.isOverlayOpen = false;
+    this.typingTimer;
     this.events();
   }
 
@@ -123,16 +126,33 @@ class Search {
   events() {
     this.openButton.on('click', () => this.openOverlay());
     this.closeButton.on('click', () => this.closeOverlay());
+    jquery__WEBPACK_IMPORTED_MODULE_0___default()(document).on('keydown', e => this.keyPressDispatcher(e));
+    this.searchField.on('keydown', () => this.typingLogic());
   }
 
   // 3. methods (function, action...)
+  typingLogic() {
+    clearTimeout(this.typingTimer);
+    this.typingTimer = setTimeout(() => {
+      console.log("this is a timeout test.");
+    }, 1000);
+  }
   openOverlay() {
     this.searchOverlay.addClass('search-overlay--active');
     jquery__WEBPACK_IMPORTED_MODULE_0___default()("body").addClass("body-no-scroll");
+    this.isOverlayOpen = true;
   }
   closeOverlay() {
     this.searchOverlay.removeClass('search-overlay--active');
     jquery__WEBPACK_IMPORTED_MODULE_0___default()("body").removeClass("body-no-scroll");
+    this.isOverlayOpen = false;
+  }
+  keyPressDispatcher(e) {
+    if (e.keyCode == 27 && this.isOverlayOpen) {
+      this.closeOverlay();
+    } else if (e.keyCode == 83 && !this.isOverlayOpen) {
+      this.openOverlay();
+    }
   }
 }
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Search);
